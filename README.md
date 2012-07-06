@@ -36,6 +36,7 @@ USAGE
 * Open <a href="http://ru-chp.livejornal.com">ru-chp community</a> feed (or any post in this feed).
 * After loading page you will see two forms "**search on alk.lv**" and "**download from rucrash**" in every post after "Tags" section.
 * Press appropriate button (it will open a new window).
+* **IMPORTANT!** Forms are NOT shown if there are NO inlined videos in a post.
 
 RUSSIAN translation
 ==============
@@ -75,4 +76,5 @@ Google Chrome/Chromium
 * Откройте ленту <a href="http://ru-chp.livejornal.com">сообщества</a> (или любой отдельный пост).
 * После полной загрузки страницы после тегов появятся две формы с кнопками "**search on alk.lv**" and "**download from rucrash**".
 * Нажмите нужную вам кнопку (ссылка откроется в отдельном окне).
+* **ВАЖНО!** Если в публикации нет встроенного видео, упомянутые кнопки не будут показываться.
 
