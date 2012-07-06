@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 // @name           RU_CHP
 // @namespace      http://ru_chp.livejournal.com/
-// @description    improve video view in ru_chp (inspered with http://www.alk.lv/RU_CHP.user.js)
+// @description    improve video view in ru_chp (inspired with http://www.alk.lv/RU_CHP.user.js)
 // @include        http://ru-chp.livejournal.com/*
 // @exclude        http://ru-chp.livejournal.com/ru_chp/*
 // ==/UserScript==
