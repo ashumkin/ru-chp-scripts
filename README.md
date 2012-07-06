@@ -70,7 +70,7 @@ Google Chrome/Chromium
 * Откройте в браузере скрипт по <a href="https://github.com/ashumkin/ru-chp-scripts/raw/master/RU_CHP.user.js">ссылке</a> или <a href="http://userscripts.org/scripts/source/137824.user.js">ссылке</a>
 * Подтвердите установку скрипта в расширения.
 
-ИСПОЛЬЗОВАНИТЕ
+ИСПОЛЬЗОВАНИЕ
 ----------
 * Откройте ленту <a href="http://ru-chp.livejornal.com">сообщества</a> (или любой отдельный пост).
 * После полной загрузки страницы после тегов появятся две формы с кнопками "**search on alk.lv**" and "**download from rucrash**".
