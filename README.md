@@ -28,6 +28,7 @@ Opera
 
 Google Chrome/Chromium
 -----
+* Remove if already installed as an extention **RU\_CHP.user.js** script
 * Install <a href="https://chrome.google.com/webstore/detail/dhdgffkkebhmkfjojejmpbldmpobfkfo">Tampermonkey</a> extention
 * Open user script in Chrome/Chromium from <a href="https://github.com/ashumkin/ru-chp-scripts/raw/master/RU_CHP.user.js">here</a> or <a href="http://userscripts.org/scripts/source/137824.user.js">here</a>
 * Confirm installation as a Tampermonkey script (press Ok) (do not install it natively in Chrome as far as installed this way it works for EVERY page but not limited by @include mask = http://ru-chp.livejournal.com/\*)
@@ -69,6 +70,7 @@ Opera
 
 Google Chrome/Chromium
 -----
+* Удалите, если уже был установлен как расширение, скрипт **RU\_CHP.user.js**
 * Установите расширение <a href="https://chrome.google.com/webstore/detail/dhdgffkkebhmkfjojejmpbldmpobfkfo">Tampermonkey</a>
 * Откройте в браузере скрипт по <a href="https://github.com/ashumkin/ru-chp-scripts/raw/master/RU_CHP.user.js">ссылке</a> или <a href="http://userscripts.org/scripts/source/137824.user.js">ссылке</a>
 * Подтвердите установку скрипта в Tampermonkey (нажать Ok) (не устанавливайте скрипт как расширение Chrome, потому что тогда он почему-то срабатывает на все страницы, а не на страницы, ограниченные маской @include = http://ru-chp.livejournal.com/\*)
