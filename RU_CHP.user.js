@@ -41,15 +41,20 @@ function find_id(element, entry) {
 	// there is no reason to search id
 	if (inlined_videos_count(entry) == 0)
 		return false;
+	var ruchp = "http://ru-chp.livejournal.com/";
     if (element.getElementById === undefined) {
-        var ruchp = "http://ru-chp.livejournal.com/";
 		var as = element.getElementsByTagName("a")[0];
 		as = as.getAttribute("href");
+		// ensure that current post is in ru-chp
 		if (as && as.indexOf(ruchp) == 0)
 			return as.replace(ruchp, "").replace(".html", "");
 	} else {
+		// find in current open post
         var	postform = element.getElementById("postform");
         if (!postform)
+			return false;
+		// ensure that current post is in ru-chp
+		if (element.location.toString().indexOf(ruchp) != 0)
 			return false;
 		var inputs = postform.getElementsByTagName("input");
 		for (var i = 0; i < inputs.length; i++) {
