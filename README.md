@@ -17,7 +17,7 @@ Firefox
 
 Opera
 -----
-* Download script to any folder on your computer.
+* Download <a href="https://github.com/ashumkin/ru-chp-scripts/raw/master/RU_CHP.user.js">script</a> to any folder on your computer.
 * Open Opera preferences (Menu - Settings - Preferences or Ctrl+F12).
 * Open "Advanced" tab
 * Select "Content" item.
@@ -28,8 +28,9 @@ Opera
 
 Google Chrome/Chromium
 -----
+* Install <a href="https://chrome.google.com/webstore/detail/dhdgffkkebhmkfjojejmpbldmpobfkfo">Tampermonkey</a> extention
 * Open user script in Chrome/Chromium from <a href="https://github.com/ashumkin/ru-chp-scripts/raw/master/RU_CHP.user.js">here</a> or <a href="http://userscripts.org/scripts/source/137824.user.js">here</a>
-* Confirm installation.
+* Confirm installation as a Tampermonkey script (press Ok) (do not install it natively in Chrome as far as installed this way it works for EVERY page but not limited by @include mask = http://ru-chp.livejournal.com/\*)
 
 USAGE
 ----------
@@ -57,7 +58,7 @@ Firefox
 
 Opera
 -----
-* Сохраните скрипт в папку на своём компьютере.
+* Сохраните <a href="https://github.com/ashumkin/ru-chp-scripts/raw/master/RU_CHP.user.js">скрипт</a> в папку на своём компьютере.
 * Откройте настройки браузера (Меню - Настройки - Общие настройки или нажмите Ctrl+F12).
 * Откройте закладку "Расширенные".
 * Выберите пунт "Содержимое".
@@ -68,8 +69,9 @@ Opera
 
 Google Chrome/Chromium
 -----
+* Установите расширение <a href="https://chrome.google.com/webstore/detail/dhdgffkkebhmkfjojejmpbldmpobfkfo">Tampermonkey</a>
 * Откройте в браузере скрипт по <a href="https://github.com/ashumkin/ru-chp-scripts/raw/master/RU_CHP.user.js">ссылке</a> или <a href="http://userscripts.org/scripts/source/137824.user.js">ссылке</a>
-* Подтвердите установку скрипта в расширения.
+* Подтвердите установку скрипта в Tampermonkey (нажать Ok) (не устанавливайте скрипт как расширение Chrome, потому что тогда он почему-то срабатывает на все страницы, а не на страницы, ограниченные маской @include = http://ru-chp.livejournal.com/\*)
 
 ИСПОЛЬЗОВАНИЕ
 ----------
