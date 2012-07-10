@@ -33,7 +33,17 @@ function append_forms_by_id(element, id) {
 
 function inlined_videos_count(element) {
 	var videos = element.getElementsByTagName("iframe");
-	return videos ? videos.length : 0;
+	if (videos && videos.length != 0)
+		return videos.length;
+	else {
+		var hrefs = element.getElementsByTagName("a");
+		var vcount = 0;
+		for (var i = 0; i < hrefs.length; i++) {
+			if (hrefs[i].getAttribute("class") && hrefs[i].getAttribute("class").indexOf("b-mediaplaceholder-video") > 0)
+				vcount += 1;
+		}
+		return vcount;
+	}
 }
 
 function find_id(element, entry) {
