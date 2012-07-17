@@ -1,5 +1,8 @@
 ﻿// ==UserScript==
 // @name           RU_CHP
+// @author         Alexey Shumkin aka Zapped
+// @license        GPL
+// @version        0.0.3
 // @namespace      http://ru_chp.livejournal.com/
 // @description    improve video view in ru_chp (inspired with http://www.alk.lv/RU_CHP.user.js)
 // @include        http://ru-chp.livejournal.com/*
