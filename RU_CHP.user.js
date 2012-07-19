@@ -30,7 +30,7 @@ function append_forms_by_id(element, id) {
 	rucrash_common_url = "http://video.rucrash.com/ruchp/";
 	rucrash_url = rucrash_common_url + id + ".mp4";
 	text =
-'<input type="text" name="url" size="40" id="ruchpPostUrl" readonly="readonly" class="text" value="' + rucrash_url + '">' +
+'<input type="text" size="40" readonly="readonly" class="text" value="' + rucrash_url + '">' +
 '<input type="submit" class="submit" value="download from rucrash" alt="Ok"> ';
 	append_form(element, rucrash_url, text);
 }
