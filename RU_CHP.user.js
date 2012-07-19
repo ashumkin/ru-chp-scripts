@@ -9,29 +9,30 @@
 // @exclude        http://ru-chp.livejournal.com/ru_chp/*
 // ==/UserScript==
 
-function append_forms_by_id(element, id) {
-	alk_url = "http://ru-chp.livejournal.com/" + id + ".html"
-	text =
-'<input type="hidden" name="journal" value="ru_chp">' +
-'<input type="text" name="url" size="40" id="ruchpPostUrl" readonly="readonly" class="text" value="' + alk_url + '">' +
-'<input type="submit" class="submit" value="search on alk.lv" alt="Ok"> ';
-
+function append_form(element, url, form_content) {
 	var form = document.createElement("form");
-	form.setAttribute("action", "http://www.alk.lv/ruchp");
+	form.setAttribute("action", url);
 	form.setAttribute("target", "_blank");
-	form.innerHTML=text;
+	form.innerHTML=form_content;
 
 	element.appendChild(form);
+}
 
-	rucrash_url = "http://video.rucrash.com/ruchp/" + id + ".mp4";
+function append_forms_by_id(element, id) {
+	alk_url = "http://www.alk.lv/ruchp";
+	id_url = "http://ru-chp.livejournal.com/" + id + ".html";
+	text =
+'<input type="hidden" name="journal" value="ru_chp">' +
+'<input type="text" name="url" size="40" id="ruchpPostUrl" readonly="readonly" class="text" value="' + id_url + '">' +
+'<input type="submit" class="submit" value="search on alk.lv" alt="Ok"> ';
+	append_form(element, alk_url, text);
+
+	rucrash_common_url = "http://video.rucrash.com/ruchp/";
+	rucrash_url = rucrash_common_url + id + ".mp4";
 	text =
 '<input type="text" name="url" size="40" id="ruchpPostUrl" readonly="readonly" class="text" value="' + rucrash_url + '">' +
 '<input type="submit" class="submit" value="download from rucrash" alt="Ok"> ';
-	var form = document.createElement("form");
-	form.setAttribute("action", rucrash_url);
-	form.setAttribute("target", "_blank");
-	form.innerHTML=text;
-	element.appendChild(form);
+	append_form(element, rucrash_url, text);
 }
 
 function inlined_videos_count(element) {
