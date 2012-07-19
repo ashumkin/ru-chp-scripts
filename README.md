@@ -36,7 +36,7 @@ Google Chrome/Chromium
 USAGE
 ----------
 * Open <a href="http://ru-chp.livejournal.com">ru-chp community</a> feed (or any post in this feed).
-* After loading page you will see two forms "**search on alk.lv**" and "**download from rucrash**" in every post after "Tags" section.
+* After loading page you will see three forms "**search on alk.lv**", "**download from rucrash.com**" and "**play on rucrash.com**" in every post after "Tags" section.
 * Press appropriate button (it will open a new window).
 * **IMPORTANT!** Forms are NOT shown if there are NO inlined videos in a post.
 
@@ -78,7 +78,7 @@ Google Chrome/Chromium
 ИСПОЛЬЗОВАНИЕ
 ----------
 * Откройте ленту <a href="http://ru-chp.livejournal.com">сообщества</a> (или любой отдельный пост).
-* После полной загрузки страницы после тегов появятся две формы с кнопками "**search on alk.lv**" and "**download from rucrash**".
+* После полной загрузки страницы после тегов появятся три формы с кнопками "**search on alk.lv**", "**download from rucrash.com**" и "**play on rucrash.com**".
 * Нажмите нужную вам кнопку (ссылка откроется в отдельном окне).
 * **ВАЖНО!** Если в публикации нет встроенного видео, упомянутые кнопки не будут показываться.
 

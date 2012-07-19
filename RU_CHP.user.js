@@ -2,7 +2,8 @@
 // @name           RU_CHP
 // @author         Alexey Shumkin aka Zapped
 // @license        GPL
-// @version        0.0.3
+// @version        0.0.4
+// @history        0.0.4 - Added redirect to rucrash video player
 // @namespace      http://ru_chp.livejournal.com/
 // @description    improve video view in ru_chp (inspired with http://www.alk.lv/RU_CHP.user.js)
 // @include        http://ru-chp.livejournal.com/*
@@ -19,20 +20,29 @@ function append_form(element, url, form_content) {
 }
 
 function append_forms_by_id(element, id) {
-	alk_url = "http://www.alk.lv/ruchp";
+	var ruchp_suffix = '/ruchp';
+	var ruchp_suffix_ = ruchp_suffix  + '/';
+	var alk_url = 'http://www.alk.lv' + ruchp_suffix;
 	id_url = "http://ru-chp.livejournal.com/" + id + ".html";
-	text =
+	var text =
 '<input type="hidden" name="journal" value="ru_chp">' +
 '<input type="text" name="url" size="40" id="ruchpPostUrl" readonly="readonly" class="text" value="' + id_url + '">' +
 '<input type="submit" class="submit" value="search on alk.lv" alt="Ok"> ';
 	append_form(element, alk_url, text);
 
-	rucrash_common_url = "http://video.rucrash.com/ruchp/";
-	rucrash_url = rucrash_common_url + id + ".mp4";
+	var rucrash_site = 'rucrash.com';
+	var rucrash_video_url = 'http://video.' + rucrash_site + ruchp_suffix_ + id + ".mp4";
 	text =
-'<input type="text" size="40" readonly="readonly" class="text" value="' + rucrash_url + '">' +
-'<input type="submit" class="submit" value="download from rucrash" alt="Ok"> ';
-	append_form(element, rucrash_url, text);
+'<input type="text" size="40" readonly="readonly" class="text" value="' + rucrash_video_url + '">' +
+'<input type="submit" class="submit" value="download from ' + rucrash_site + '" alt="Ok"> ';
+	append_form(element, rucrash_video_url, text);
+
+	var rucrash_player_url = 'http://www.' + rucrash_site + ruchp_suffix_;
+	text =
+'<input type="text" size="40" readonly="readonly" class="text" value="' + rucrash_player_url + '?v=' + id + '">' +
+'<input type="hidden" name="v" value="' + id + '">' +
+'<input type="submit" class="submit" value="play on ' + rucrash_site + '" alt="Ok"> ';
+	append_form(element, rucrash_player_url, text);
 }
 
 function inlined_videos_count(element) {
