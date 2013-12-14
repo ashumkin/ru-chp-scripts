@@ -2,17 +2,19 @@
 // @name           RU_CHP
 // @author         Alexey Shumkin aka Zapped
 // @license        GPL
-// @version        0.0.5
+// @version        0.0.5.1
+// @history        0.0.5.1 - Fixed variables error
 // @history        0.0.5 - Added support for Opera, removed alk.lv (invalid backup site long time ago)
 // @history        0.0.4 - Added redirect to rucrash video player
 // @namespace      http://ru_chp.livejournal.com/
 // @description    improve video view in ru_chp (inspired with http://www.alk.lv/RU_CHP.user.js)
 // @include        http://ru-chp.livejournal.com/*
 // @exclude        http://ru-chp.livejournal.com/ru_chp/*
+// @grant          none
 // ==/UserScript==
 !function(win) {
 
-	if (window != window.top) return;
+	if (win.self != win.top) return;
 	var doc = win.document;
 
 
