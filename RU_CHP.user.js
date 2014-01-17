@@ -120,13 +120,14 @@
 
 				var dds = entries[i].getElementsByTagName('dd');
 				for (var j = 0; j < dds.length; j++ ) {
-					if (dds[j].getAttribute("class") == "entry-text") {
-						if (inlined_videos_count(dds[j]) == 0)
+					entry = dds[j]
+					if (entry.getAttribute("class") == "entry-text") {
+						if (inlined_videos_count(entry) == 0)
 							// if no videos, do not add any forms
 							continue;
 						// find post text
 						id = id.replace("post-ru_chp-", "");
-						append_forms_by_id(dds[j], id);
+						append_forms_by_id(entry, id);
 					}
 				}
 			}
