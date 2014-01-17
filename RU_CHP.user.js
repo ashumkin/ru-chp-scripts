@@ -17,7 +17,6 @@
 	if (win.self != win.top) return;
 	var doc = win.document;
 
-
 	function append_form(element, url, form_content) {
 		var form = doc.createElement("form");
 		form.setAttribute("action", url);
@@ -48,9 +47,9 @@
 
 	function inlined_videos_count(element) {
 		var videos = element.getElementsByTagName("iframe");
-		if (videos && videos.length != 0)
+		if (videos && videos.length != 0) {
 			return videos.length;
-		else {
+		} else {
 			var hrefs = element.getElementsByTagName("a");
 			var vcount = 0;
 			for (var i = 0; i < hrefs.length; i++) {
@@ -67,6 +66,7 @@
 		if (inlined_videos_count(entry) == 0)
 			return false;
 		var ruchp = "http://ru-chp.livejournal.com/";
+		// if element is not document
 		if (element.getElementById === undefined) {
 			var as = element.getElementsByTagName("a")[0];
 			as = as.getAttribute("href");
@@ -75,7 +75,7 @@
 				return as.replace(ruchp, "").replace(".html", "");
 		} else {
 			// find in current open post
-			var	postform = element.getElementById("postform");
+			var postform = element.getElementById("postform");
 			if (!postform)
 				return false;
 			// ensure that current post is in ru-chp
@@ -104,8 +104,9 @@
 				// if community feed
 				id = find_id(entry, entry);
 			}
-			if (id)
+			if (id) {
 				append_forms_by_id(entry, id);
+			}
 		}
 	}
 
