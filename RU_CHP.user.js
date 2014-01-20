@@ -2,7 +2,8 @@
 // @name           RU_CHP
 // @author         Alexey Shumkin aka Zapped
 // @license        GPL
-// @version        0.0.5.1
+// @version        0.0.5.2
+// @history        0.0.5.2 - Fixed ?style=mine
 // @history        0.0.5.1 - Fixed variables error
 // @history        0.0.5 - Added support for Opera, removed alk.lv (invalid backup site long time ago)
 // @history        0.0.4 - Added redirect to rucrash video player
@@ -91,21 +92,27 @@
 	}
 
 	function append_in_mine_style() {
-		var entries = doc.getElementsByTagName("div");
-		for (var i = 0; i < entries.length; i++ ) {
-			// find post
-			var entry = entries[i];
-			var id = false;
-			if (entry.getAttribute("class")== "b-singlepost-body") {
-				// if single post view
-				id = find_id(doc, entry);
-				entry = entry.parentNode;
-			} else if (entry.getAttribute("style") == "text-align:left") {
-				// if community feed
-				id = find_id(entry, entry);
+		var entry = doc.getElementById('content-wrapper');
+		// if single post view
+		if (entry) {
+			id = find_id(doc, entry);
+			article = entry.getElementsByClassName('b-singlepost-wrapper')[0]
+			if (article) {
+				append_forms_by_id(article, id);
 			}
-			if (id) {
-				append_forms_by_id(entry, id);
+		} else {
+			entries = doc.getElementsByTagName('div');
+			for (var i = 0; i < entries.length; i++ ) {
+				// find post
+				var entry = entries[i];
+				var id = false;
+				// if community feed
+				if (entry.getAttribute("style") == "text-align:left") {
+					id = find_id(entry, entry);
+				}
+				if (id) {
+					append_forms_by_id(entry, id);
+				}
 			}
 		}
 	}
