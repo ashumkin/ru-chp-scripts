@@ -35,13 +35,13 @@
 		var rucrash_site = 'rucrash.com';
 		var rucrash_video_url = 'http://video.' + rucrash_site + ruchp_suffix_ + id + ".mp4";
 		text =
-	'<input type="text" size="40" readonly="readonly" class="text" value="' + rucrash_video_url + '">' +
+	'<input type="text" size="50" readonly="readonly" class="text" value="' + rucrash_video_url + '">' +
 	'<input type="submit" class="submit" value="download from ' + rucrash_site + '" alt="Ok"> ';
 		append_form(element, rucrash_video_url, text);
 
 		var rucrash_player_url = 'http://www.' + rucrash_site + ruchp_suffix_;
 		var text =
-	'<input type="text" size="40" readonly="readonly" class="text" value="' + rucrash_player_url + '?v=' + id + '">' +
+	'<input type="text" size="50" readonly="readonly" class="text" value="' + rucrash_player_url + '?v=' + id + '">' +
 	'<input type="hidden" name="v" value="' + id + '">' +
 	'<input type="submit" class="submit" value="play on ' + rucrash_site + '" alt="Ok"> ';
 		append_form(element, rucrash_player_url, text);
@@ -56,7 +56,7 @@
 		}
 		var youtube_site = 'http://www.youtube.com/watch?v=' + id + time_str;
 		text =
-			'<input type="text" size="40" readonly="readonly" class="text" value="' + youtube_site + '">' +
+			'<input type="text" size="50" readonly="readonly" class="text" value="' + youtube_site + '">' +
 			'<input type="hidden" name="v" value="' + id + '">' +
 			(time_str != '' ? '<input type="hidden" name="t" value="' + time + 's">' : '') +
 			'<input type="submit" class="submit" value="watch on Youtube" alt="Ok"> ';
