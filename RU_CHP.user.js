@@ -2,7 +2,8 @@
 // @name           RU_CHP
 // @author         Alexey Shumkin aka Zapped
 // @license        GPL
-// @version        0.0.6
+// @version        0.0.6.1
+// @history        0.0.6.1 - Skip inlined NOT from Youtube videos
 // @history        0.0.6 - Added Youtube field (to open video on Youtube with predefined time)
 // @history        0.0.5.2 - Fixed ?style=mine
 // @history        0.0.5.1 - Fixed variables error
@@ -48,6 +49,8 @@
 	}
 
 	function append_resolved_video(element, id_array) {
+		// do not add videos NOT from Youtube
+		if (id_array == null) return;
 		var id = id_array.id;
 		var time = id_array.time;
 		var time_str = '';
@@ -117,19 +120,30 @@
 	function extract_youtube_url(src) {
 		src = unescape(src);
 		params = src.split('&');
-		var id;
+		var id, source = undefined;
 		for (var i = 0; i < params.length; i++) {
 			key_value = params[i].split('=');
-			if (key_value[0] == 'vid') {
+			if (key_value[0] == 'source') {
+				source = key_value[1];
+				if (source != 'youtube') {
+					source = undefined;
+				}
+			} else if (key_value[0] == 'vid') {
 				id = key_value[1];
-				break;
 			}
+		}
+		// if we do not know where source from
+		if (source == undefined) {
+			id = null;
 		}
 		return id;
 	}
 
 	function resolve_video_url(frame) {
 		var result = { id: extract_youtube_url(frame.src), time: 0};
+		if (! result.id) {
+			result = null;
+		}
 		return result;
 	}
 
