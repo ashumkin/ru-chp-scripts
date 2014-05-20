@@ -2,7 +2,8 @@
 // @name           RU_CHP
 // @author         Alexey Shumkin aka Zapped
 // @license        GPL
-// @version        0.0.6.1
+// @version        0.0.6.2
+// @history        0.0.6.2 - Fixed Youtube links detection when placeholders are on
 // @history        0.0.6.1 - Skip inlined NOT from Youtube videos
 // @history        0.0.6 - Added Youtube field (to open video on Youtube with predefined time)
 // @history        0.0.5.2 - Fixed ?style=mine
@@ -140,7 +141,12 @@
 	}
 
 	function resolve_video_url(frame) {
-		var result = { id: extract_youtube_url(frame.src), time: 0};
+		var url = frame.src;
+		var result = { id: undefined, time: 0 };
+		if (typeof frame == 'string') {
+			url = frame;
+		}
+		result.id = extract_youtube_url(url);
 		if (! result.id) {
 			result = null;
 		}
@@ -157,6 +163,14 @@
 
 	function get_inlined_videos(element) {
 		var videos = element.getElementsByTagName("iframe");
+		if (!(videos && videos.length != 0)) {
+			var hrefs = element.getElementsByTagName("a");
+			var videos = new Array();
+			for (var i = 0; i < hrefs.length; i++) {
+				if (hrefs[i].getAttribute("class") && hrefs[i].getAttribute("class").indexOf("b-mediaplaceholder-video") > 0)
+					videos.push(hrefs[i].href);
+			}
+		}
 		videos = get_resolved_videos(videos);
 		videos = extract_times(element, videos);
 		return videos;
