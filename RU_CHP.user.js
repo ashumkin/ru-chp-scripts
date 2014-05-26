@@ -81,7 +81,7 @@
 			var vcount = 0;
 			for (var i = 0; i < hrefs.length; i++) {
 				if (hrefs[i].getAttribute("class") && hrefs[i].getAttribute("class").indexOf("b-mediaplaceholder-video") > 0)
-					vcount += 1;
+					vcount++;
 			}
 			return vcount;
 		}
