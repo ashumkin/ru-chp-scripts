@@ -207,16 +207,14 @@
 	}
 
 	function append_in_mine_style() {
-		var entry = doc.getElementById('content-wrapper');
+		var entry = doc.getElementById('b-sin-wrapper');
+		article = doc.getElementsByClassName('b-singlepost-body')[0];
 		// if single post view
-		if (entry) {
-			id = find_id(doc, entry);
-			article = entry.getElementsByClassName('b-singlepost-wrapper')[0]
-			if (article) {
-				append_forms_by_id(article, id);
-				videos = get_inlined_videos(article);
-				append_resolved_videos(article, videos);
-			}
+		if (article) {
+			id = find_id(doc, article);
+			append_forms_by_id(article, id);
+			videos = get_inlined_videos(article);
+			append_resolved_videos(article, videos);
 		} else {
 			entries = doc.getElementsByTagName('div');
 			for (var i = 0; i < entries.length; i++ ) {
