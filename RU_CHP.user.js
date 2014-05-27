@@ -97,19 +97,19 @@
 
 	function extract_times(element, videos) {
 		var times_re = /(\d{1,2})[:.-](\d{2})/;
-		var body_entry = element.getElementsByClassName('entry-content');
-		if (body_entry && body_entry[0]) {
-			body_entry = body_entry[0].textContent;
+		var entry = element.getElementsByClassName('entry-content');
+		if (entry && entry[0]) {
+			entry = entry[0].textContent;
 		} else {
 			// ?style=mine
-			body_entry = element.getElementsByClassName('b-singlepost-body')
-			if (body_entry && body_entry[0]) {
-				body_entry = body_entry[0].textContent;
+			entry = element.getElementsByClassName('b-singlepost-body')
+			if (entry && entry[0]) {
+				entry = entry[0].textContent;
 			}
 		}
 		var match = null;
 		var count = 0;
-		if (match = times_re.exec(body_entry)) {
+		if (match = times_re.exec(entry)) {
 			var time = convert_to_seconds(match);
 			if (videos[count]) {
 				videos[count].time = time;
