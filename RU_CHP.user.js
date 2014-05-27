@@ -2,7 +2,8 @@
 // @name           RU_CHP
 // @author         Alexey Shumkin aka Zapped
 // @license        GPL
-// @version        0.0.6.2
+// @version        0.0.6.3
+// @history        0.0.6.3 - Make time detection smarter. Detect from phrases "From N seconds".
 // @history        0.0.6.2 - Fixed Youtube links detection when placeholders are on
 // @history        0.0.6.1 - Skip inlined NOT from Youtube videos
 // @history        0.0.6 - Added Youtube field (to open video on Youtube with predefined time)
@@ -88,32 +89,69 @@
 		}
 	}
 
-	function convert_to_seconds(match) {
-		var minutes = parseInt(match[1]);
-		var seconds = parseInt(match[2]);
+	function convert_to_seconds(match, full_time) {
+		if (full_time) {
+			// regexp for "mm:ss"
+			var minutes = parseInt(match[1]);
+			var seconds = parseInt(match[2]);
+		} else {
+			// regexp for "N seconds"
+			var minutes = 0
+			var seconds = parseInt(match[1]);
+		}
 		seconds = 60 * minutes + seconds;
 		return seconds;
 	}
 
 	function extract_times(element, videos) {
-		var times_re = /(\d{1,2})[:.-](\d{2})/;
-		var entry = element.getElementsByClassName('entry-content');
+		var entry = null;
+		var entries = element.parentNode.getElementsByClassName('entry-title');
+		if (entries.length > 0) {
+			for (var i = 0; i < entries.length; i++) {
+				if (entries[i].getAttribute('class') == 'entry-title') {
+					entry = entries[i].textContent;
+					break;
+				}
+			}
+		} else {
+			// ?style=mine
+			entries = element.parentNode.getElementsByClassName('b-singlepost-title');
+			if (entries.length > 0) {
+				entry = entries[0].textContent;
+			}
+		}
+		videos = do_extract_times(entry, videos);
+		entry = element.getElementsByClassName('entry-content');
 		if (entry && entry[0]) {
 			entry = entry[0].textContent;
 		} else {
 			// ?style=mine
-			entry = element.getElementsByClassName('b-singlepost-body')
-			if (entry && entry[0]) {
-				entry = entry[0].textContent;
-			}
+			entry = element.textContent;
 		}
+		return do_extract_times(entry, videos);
+	}
+
+	function do_extract_times(entry, videos) {
 		var match = null;
 		var count = 0;
-		if (match = times_re.exec(entry)) {
-			var time = convert_to_seconds(match);
+		// remove dates first
+		entry = entry.replace(/\d+[:.-]\d+[:.-]\d+/, '');
+		var times_re = /(\d{1,2})[:.-](\d{2})/g;
+		var times_re_word = /с (\d+)(-?й? ?)?(сек|c\b)/ig;
+		match = times_re.exec(entry);
+		var full_time = true;
+		if (!match) {
+			times_re = times_re_word;
+			full_time = false;
+			match = times_re.exec(entry);
+		}
+		while (match != null) {
+			var time = convert_to_seconds(match, full_time);
 			if (videos[count]) {
 				videos[count].time = time;
 			}
+			count++;
+			match = times_re.exec(entry);
 		}
 		return videos;
 	}
