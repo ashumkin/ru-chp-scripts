@@ -2,7 +2,8 @@
 // @name           RU_CHP
 // @author         Alexey Shumkin aka Zapped
 // @license        GPL
-// @version        0.0.6.3
+// @version        0.0.6.4
+// @history        0.0.6.4 - Note non-Youtube videos
 // @history        0.0.6.3 - Make time detection smarter. Detect from phrases "From N seconds".
 // @history        0.0.6.2 - Fixed Youtube links detection when placeholders are on
 // @history        0.0.6.1 - Skip inlined NOT from Youtube videos
@@ -52,25 +53,34 @@
 
 	function append_resolved_video(element, id_array) {
 		// do not add videos NOT from Youtube
-		if (id_array == null) return;
+		var youtube_site, submit_button;
 		var id = id_array.id;
 		var time = id_array.time;
 		var time_str = '';
 		if (time != 0) {
 			time_str = '&amp;t=' + time + 's'
 		}
-		var youtube_site = 'http://www.youtube.com/watch?v=' + id + time_str;
+		if (id == undefined) {
+			youtube_site = 'NOT a Youtube video';
+		} else {
+			youtube_site = 'http://www.youtube.com/watch?v=' + id + time_str;
+			submit_button = '<input type="submit" class="submit" value="watch on Youtube" alt="Ok"> ';
+		}
 		text =
 			'<input type="text" size="50" readonly="readonly" class="text" value="' + youtube_site + '">' +
 			'<input type="hidden" name="v" value="' + id + '">' +
 			(time_str != '' ? '<input type="hidden" name="t" value="' + time + 's">' : '') +
-			'<input type="submit" class="submit" value="watch on Youtube" alt="Ok"> ';
+			(submit_button ? submit_button : '');
 		append_form(element, youtube_site, text);
+		return submit_button;
 	}
 
 	function append_resolved_videos(element, videos) {
 		for (var i = 0; i < videos.length; i++) {
-			append_resolved_video(element, videos[i]);
+			if (! append_resolved_video(element, videos[i])) {
+				// stop if no videos (for two or more videos)
+				break;
+			}
 		}
 	}
 
@@ -185,9 +195,6 @@
 			url = frame;
 		}
 		result.id = extract_youtube_url(url);
-		if (! result.id) {
-			result = null;
-		}
 		return result;
 	}
 
