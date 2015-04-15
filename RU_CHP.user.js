@@ -2,7 +2,8 @@
 // @name           RU_CHP
 // @author         Alexey Shumkin aka Zapped
 // @license        GPL
-// @version        0.0.6.4
+// @version        0.0.6.5
+// @version        0.0.6.5 - Added "ru_chp.livejournal.com" to @include
 // @history        0.0.6.4 - Note non-Youtube videos
 // @history        0.0.6.3 - Make time detection smarter. Detect from phrases "From N seconds".
 // @history        0.0.6.2 - Fixed Youtube links detection when placeholders are on
@@ -15,6 +16,7 @@
 // @namespace      http://ru_chp.livejournal.com/
 // @description    improve video view in ru_chp (inspired with http://www.alk.lv/RU_CHP.user.js)
 // @include        http://ru-chp.livejournal.com/*
+// @include        http://ru_chp.livejournal.com/*
 // @exclude        http://ru-chp.livejournal.com/ru_chp/*
 // @grant          none
 // ==/UserScript==
