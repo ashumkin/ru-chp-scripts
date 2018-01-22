@@ -2,7 +2,8 @@
 // @name           RU_CHP
 // @author         Alexey Shumkin aka Zapped
 // @license        GPL
-// @version        0.0.6.5
+// @version        0.0.6.6
+// @version        0.0.6.6 - Added "https" scheme to @include
 // @version        0.0.6.5 - Added "ru_chp.livejournal.com" to @include
 // @history        0.0.6.4 - Note non-Youtube videos
 // @history        0.0.6.3 - Make time detection smarter. Detect from phrases "From N seconds".
@@ -15,6 +16,8 @@
 // @history        0.0.4 - Added redirect to rucrash video player
 // @namespace      http://ru_chp.livejournal.com/
 // @description    improve video view in ru_chp (inspired with http://www.alk.lv/RU_CHP.user.js)
+// @include        https://ru-chp.livejournal.com/*
+// @include        https://ru_chp.livejournal.com/*
 // @include        http://ru-chp.livejournal.com/*
 // @include        http://ru_chp.livejournal.com/*
 // @exclude        http://ru-chp.livejournal.com/ru_chp/*
